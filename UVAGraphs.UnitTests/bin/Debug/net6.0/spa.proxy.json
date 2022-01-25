@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:44460",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\UVAGraphs.Api\\ClientApp\\",
+"MaxTimeoutInSeconds": "120"
+}
+}
