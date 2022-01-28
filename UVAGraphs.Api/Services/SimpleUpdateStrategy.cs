@@ -15,7 +15,7 @@ public class SimpleUpdateStrategy : IUpdateStrategy
         DaysForUpdate = 30;
         maxDownloadAttempts = 5;
     }
-
+    // TODO: este método podría delegarse a la clase DatabaseAnalyst 
     private void SetDatabaseStatus(DateTime? lastUpdate)
     {
         if (lastUpdate == null)
@@ -24,49 +24,56 @@ public class SimpleUpdateStrategy : IUpdateStrategy
             System.Console.WriteLine(_databaseStatus.ToString());
         }
         else if (lastUpdate?.AddDays(DaysForUpdate) < DateTime.Now)
-        { 
-            _databaseStatus = DatabaseStatus.Outdated; 
+        {
+            _databaseStatus = DatabaseStatus.Outdated;
             System.Console.WriteLine(_databaseStatus.ToString());
         }
-        else 
-        { 
-            _databaseStatus = DatabaseStatus.UpToDate; 
+        else
+        {
+            _databaseStatus = DatabaseStatus.UpToDate;
             System.Console.WriteLine(_databaseStatus.ToString());
         }
     }
-
+    //Y si paso por referencia al Analyst la databaseStatus y me devuelve el should update?
     public bool ShouldUpdate(DateTime? lastUpdate)
     {
         SetDatabaseStatus(lastUpdate);
         return _databaseStatus == DatabaseStatus.Empty || _databaseStatus == DatabaseStatus.Outdated;
     }
-
+    
     public bool Execute(DateTime? lastUpdate, ref List<UVA> list)
     {
-        bool result = true;
-        int downloadAttempts = 0;
+        bool result = true;        
         if (ShouldUpdate(lastUpdate))
         {
-            bool successfullDownload = false;
-            using(Scraper s = new Scraper())
+            result = ExecuteWithScraper(lastUpdate);
+            if (result)
             {
-                while(downloadAttempts < maxDownloadAttempts && !successfullDownload)
-                {
-                    successfullDownload = s.DownloadFile(lastUpdate);
-                }
-                downloadAttempts++;
-            }
-            result = successfullDownload;
-            var resultString =  successfullDownload? "descarga exitosa" : "error en la descarga";
-            System.Console.WriteLine("Intentos de descarga realizados: " + downloadAttempts + "/" + maxDownloadAttempts + "\n" + resultString);
-            if (successfullDownload)
-            {
-                using (FileParser f = new FileParser())
-                {
-                    list = f.ParseFile();
-                }                
+                list = ParseScrappedCsv();
             }
         }
         return result;
+    }
+    private bool ExecuteWithScraper(DateTime? lastUpdate)
+    {
+        int downloadAttempts = 0;
+        bool successfullDownload = false;
+        using (Scraper s = new Scraper())
+        {
+            while (downloadAttempts < maxDownloadAttempts && !successfullDownload)
+            {
+                //Si lastUpdate es null, el Scraper usa la fecha de inicio histórica
+                successfullDownload = s.DownloadFile(lastUpdate);
+            }
+            downloadAttempts++;
+        }
+        return successfullDownload;
+    }
+    private List<UVA> ParseScrappedCsv()
+    {
+        using (FileParser f = new FileParser())
+        {
+            return f.ParseFile();
+        }
     }
 }
