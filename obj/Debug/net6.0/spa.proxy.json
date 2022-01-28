@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:44460",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\Leandro\\Documents\\UVAGraphs\\ClientApp\\",
+"MaxTimeoutInSeconds": "120"
+}
+}

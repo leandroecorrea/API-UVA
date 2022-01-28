@@ -1,30 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace UVAGraphs.Api.Model;
-public class UVAContext : IUVAContext
+
+public class UVAContext : DbContext
 {
+    public DbSet<UVA>? Uvas { get; set; }
+    public string DbPath { get; private set; }
 
-    public List<UVA> GetUVAs()
+    public UVAContext(DbContextOptions options) : base(options)
     {
-        return CsvToUVA.GetInstance().GetUVAs();
-    }
-
-    public float GetValue(DateTime date)
-    {
-        var ctx = CsvToUVA.GetInstance().GetUVAs();
-        return ctx.FirstOrDefault(x=> x.Date.Equals(date)).Value;        
-    }
-    public DateTime GetDate(float value)
-    {
-        var ctx = CsvToUVA.GetInstance().GetUVAs();
-        return ctx.FirstOrDefault(x=> x.Value == value).Date;
+        var folder = Environment.SpecialFolder.LocalApplicationData;
+        var path = Environment.GetFolderPath(folder);
+        DbPath = $"{path}{System.IO.Path.DirectorySeparatorChar}uvagraphs.db";
     }
 
-    public float GetRise(DateTime begin, DateTime end)
-    {
-        var ctx = CsvToUVA.GetInstance().GetUVAs();
-        float beginValue = this.GetValue(begin);
-        float endValue = this.GetValue(end);                        
-        return (beginValue - endValue) / beginValue * 100;        
-    }
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlite($"Data Source={DbPath}");
 }

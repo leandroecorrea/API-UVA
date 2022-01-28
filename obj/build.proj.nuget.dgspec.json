@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\build.proj": {}
+    "C:\\Users\\Leandro\\Documents\\UVAGraphs\\build.proj": {}
   },
   "projects": {
-    "C:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\build.proj": {
+    "C:\\Users\\Leandro\\Documents\\UVAGraphs\\build.proj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\build.proj",
+        "projectUniqueName": "C:\\Users\\Leandro\\Documents\\UVAGraphs\\build.proj",
         "projectName": "build",
-        "projectPath": "C:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\build.proj",
-        "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\obj\\",
+        "projectPath": "C:\\Users\\Leandro\\Documents\\UVAGraphs\\build.proj",
+        "packagesPath": "C:\\Users\\Leandro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Leandro\\Documents\\UVAGraphs\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\leand\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Leandro\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net45"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +32,15 @@
       "frameworks": {
         "net45": {
           "targetAlias": "net45",
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -4,13 +4,18 @@ using UVAGraphs.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// var connectionString = builder.Configuration.GetConnectionString("uvagraphs") ?? "Data Source=uvagraphs.db";
+// builder.Services.AddSqlite<UVAContext>(connectionString);
 
+builder.Services.AddDbContext<UVAContext>(ServiceLifetime.Singleton);
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IUVAContext, UVAContext>();
-builder.Services.AddScoped<IUVARepository, UVARepository>();
-builder.Services.AddScoped<IUVAServices, UVAServices>();
+
+builder.Services.AddSingleton<UVARepository>();
+builder.Services.AddSingleton<IUpdatable>(x => x.GetRequiredService<UVARepository>());
+builder.Services.AddSingleton<IUVARepository>(x => x.GetRequiredService<UVARepository>());
+builder.Services.AddHostedService<UpdateServices>();
 
 var app = builder.Build();
 

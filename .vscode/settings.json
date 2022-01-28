@@ -1,2 +1,8 @@
 {
+    "dotnet-test-explorer.testProjectPath": "**/*Tests.csproj",
+    "coverage-gutters.showLineCoverage": true,
+    "coverage-gutters.showGutterCoverage": false,
+    "coverage-gutters.coverageBaseDir": "C:/Users/Leandro/Documents/UVAGraphs/UVAGraphs.UnitTests/TestResults/7a17dae3-89e2-4c9c-a60f-a88f5ab9daca",
+    "coverage-gutters.coverageReportFileName": "coverage.cobertura.xml",
+    "dotnet-test-explorer.testArguments": "/p:CollectCoverage=true /p:CoverletOutputFormat=Icov /p:CoverletOutput=./coverage"
 }

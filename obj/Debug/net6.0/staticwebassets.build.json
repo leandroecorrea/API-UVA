@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "mm9mx6+D/73k8KhEE3QoUW7k/eH8LVvm3hGw3d+SQcI=",
+  "Source": "UVAGraphs",
+  "BasePath": "_content/UVAGraphs",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "UVAGraphs\\wwwroot",
+      "Source": "UVAGraphs",
+      "ContentRoot": "C:\\Users\\Leandro\\Documents\\UVAGraphs\\wwwroot\\",
+      "BasePath": "_content/UVAGraphs",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Leandro\\Documents\\UVAGraphs\\wwwroot\\favicon.ico",
+      "SourceId": "UVAGraphs",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Leandro\\Documents\\UVAGraphs\\wwwroot\\",
+      "BasePath": "_content/UVAGraphs",
+      "RelativePath": "favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon.ico"
+    }
+  ]
+}
