@@ -11123,32 +11123,39 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Leandro\\.nuget\\packages\\": {}
+    "C:\\Users\\leand\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Leandro\\Documents\\UVAGraphs\\UVAGraphs.UnitTests\\UVAGraphs.UnitTests.csproj",
+      "projectUniqueName": "c:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\UVAGraphs.UnitTests\\UVAGraphs.UnitTests.csproj",
       "projectName": "UVAGraphs.UnitTests",
-      "projectPath": "c:\\Users\\Leandro\\Documents\\UVAGraphs\\UVAGraphs.UnitTests\\UVAGraphs.UnitTests.csproj",
-      "packagesPath": "C:\\Users\\Leandro\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Leandro\\Documents\\UVAGraphs\\UVAGraphs.UnitTests\\obj\\",
+      "projectPath": "c:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\UVAGraphs.UnitTests\\UVAGraphs.UnitTests.csproj",
+      "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\UVAGraphs.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Leandro\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\leand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "c:\\Users\\Leandro\\Documents\\UVAGraphs\\UVAGraphs.Api\\UVAGraphs.Api.csproj": {
-              "projectPath": "c:\\Users\\Leandro\\Documents\\UVAGraphs\\UVAGraphs.Api\\UVAGraphs.Api.csproj"
+            "c:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\UVAGraphs.Api\\UVAGraphs.Api.csproj": {
+              "projectPath": "c:\\Users\\leand\\OneDrive\\Documentos\\UVA-API\\API-UVA\\UVAGraphs.Api\\UVAGraphs.Api.csproj"
             }
           }
         }
@@ -11207,7 +11214,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
