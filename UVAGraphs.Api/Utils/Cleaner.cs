@@ -4,7 +4,7 @@ public static class Cleaner
 {
     public static void Clean()
     {
-        var files = Directory.GetFiles(Scraper.DOWNLOAD_PATH);
+        var files = Directory.GetFiles(FileDownloader.DOWNLOAD_PATH);
         files.ToList().ForEach(f => {
             File.Delete(f);
             System.Console.WriteLine(f);

@@ -1,13 +1,10 @@
 namespace UVAGraphs.Api.Services;
-using UVAGraphs.Api.Enums;
 using UVAGraphs.Api.Model;
 using UVAGraphs.Api.Utils;
 
 public class SimpleUpdateStrategy : IUpdateStrategy
 {
     public int DaysForUpdate { get; }
-    private DatabaseStatus _databaseStatus;
-
     private int maxDownloadAttempts;
 
     public SimpleUpdateStrategy()
@@ -15,50 +12,51 @@ public class SimpleUpdateStrategy : IUpdateStrategy
         DaysForUpdate = 30;
         maxDownloadAttempts = 5;
     }
-    // TODO: este método podría delegarse a la clase DatabaseAnalyst 
-    private void SetDatabaseStatus(DateTime? lastUpdate)
-    {
-        if (lastUpdate == null)
-        {
-            _databaseStatus = DatabaseStatus.Empty;
-            System.Console.WriteLine(_databaseStatus.ToString());
-        }
-        else if (lastUpdate?.AddDays(DaysForUpdate) < DateTime.Now)
-        {
-            _databaseStatus = DatabaseStatus.Outdated;
-            System.Console.WriteLine(_databaseStatus.ToString());
-        }
-        else
-        {
-            _databaseStatus = DatabaseStatus.UpToDate;
-            System.Console.WriteLine(_databaseStatus.ToString());
-        }
-    }
-    //Y si paso por referencia al Analyst la databaseStatus y me devuelve el should update?
-    public bool ShouldUpdate(DateTime? lastUpdate)
-    {
-        SetDatabaseStatus(lastUpdate);
-        return _databaseStatus == DatabaseStatus.Empty || _databaseStatus == DatabaseStatus.Outdated;
-    }
     
     public bool Execute(DateTime? lastUpdate, ref List<UVA> list)
     {
         bool result = true;        
-        if (ShouldUpdate(lastUpdate))
+        if (DatabaseStatusAnalyzer.ShouldUpdate(lastUpdate, DaysForUpdate))
         {
-            result = ExecuteWithScraper(lastUpdate);
-            if (result)
+            ExecuteWithWebParser(lastUpdate, ref list);
+            // result = ExecuteWithFileDownloader(lastUpdate);
+            // if (result)
+            // {
+            //     list = ParseScrappedCsv();
+            // }
+            // else
+            // {
+            //     ExecuteWithWebParser(lastUpdate, ref list);
+            // }            
+        }
+        return result;
+    }
+    
+    private bool ExecuteWithWebParser(DateTime? lastUpdate, ref List<UVA> list)
+    {
+        bool result = true;
+        using(WebParser wp = new WebParser())
+        {
+            try
             {
-                list = ParseScrappedCsv();
+                list = wp.Parse(lastUpdate);
+                if (list == null || list.Count <= 0)
+                    result = false;
+            }
+            catch
+            {
+                result = false;
             }
         }
         return result;
     }
-    private bool ExecuteWithScraper(DateTime? lastUpdate)
+
+
+    private bool ExecuteWithFileDownloader(DateTime? lastUpdate)
     {
         int downloadAttempts = 0;
         bool successfullDownload = false;
-        using (Scraper s = new Scraper())
+        using (FileDownloader s = new FileDownloader())
         {
             while (downloadAttempts < maxDownloadAttempts && !successfullDownload)
             {

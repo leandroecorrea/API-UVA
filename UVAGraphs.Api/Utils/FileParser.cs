@@ -7,40 +7,33 @@ using UVAGraphs.Api.Model;
 public class FileParser : IDisposable
 {    
     public static readonly string FILENAME = "Estadis.csv";
-
     public List<UVA> ParseFile()
-    {        
-        List<UVA> UVAs = new List<UVA>();                     
-        try
-        {
-            using (TextFieldParser csvParser = new TextFieldParser(Scraper.DOWNLOAD_PATH + FILENAME))
+    {
+        List<UVA> UVAs = new List<UVA>(); 
+        string[] lines = File.ReadAllLines(FileDownloader.DOWNLOAD_PATH + FILENAME);
+        char separatoryChar = ';';                
+        foreach(var line in lines)
+        {            
+            var entry = line.TrimEnd(separatoryChar).Split(separatoryChar);
+            if(entry.Length == 2)
             {
-                csvParser.SetDelimiters(new string[] { ";" });
-                csvParser.ReadLine();
-                var culture = new CultureInfo("en-US");
-                while (!csvParser.EndOfData)
+                DateTime date;
+                float value;
+                string stringDate = entry[0];
+                string stringValue = entry[1].TrimNumberForFloat();
+                if(DateTime.TryParse(stringDate, out date) && Single.TryParse(stringValue, out value))
                 {
-                    string[]? fields = csvParser.ReadFields();
-                    float value;
-                    DateTime date;
-                    if (DateTime.TryParse(fields?[0], culture, DateTimeStyles.None, out date) && Single.TryParse(fields[1], out value))
-                    {
-                        UVAs.Add(new UVA
-                        {
-                            Date = date,
-                            Value = value
-                        });
-                    }
-                }                
-                csvParser.Close();
+                    UVAs.Add(new UVA{
+                        Date = date,
+                        Value = value
+                    });
+                }
             }
         }
-        catch (Exception e)
-        {
-            System.Console.WriteLine("Exception thrown: " + e.Message + "///" + e.StackTrace);            
-        }    
         return UVAs;
     }
+
+    
 
     protected virtual bool IsFileBeingUsed(FileInfo file)
     {

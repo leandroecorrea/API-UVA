@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eluVxsAbqDEPIdjU2zKzlruTBgO9s8PPo/bM4wy40nxOWkOpdZOEAlvZeboh+VEgXBIhAHLsvjZeRIEQnjLOeQ==",
+  "dgSpecHash": "5diD58E63CzJ9VqiiDHFOv7BI/nMZKEwF8v8MuKg7kIbpplpW10xxm18EJ3IsJAezk+C1GKZTjLd46KlJOmC2Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Leandro\\Documents\\UVAGraphs\\build.proj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Leandro\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
-    "C:\\Users\\Leandro\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net45\\1.0.2\\microsoft.netframework.referenceassemblies.net45.1.0.2.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

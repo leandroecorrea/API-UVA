@@ -12,6 +12,21 @@ public static class Extensions
         string slash = "%2f";        
         return $"{day}{slash}{month}{slash}{year}";
     }
+
+    public static string TrimNumberForFloat(this string number)
+    {
+        char floatingPointChar = '.';
+        int totalDecimals = 2;
+        if(number.Contains(floatingPointChar))
+        {
+            var index = number.IndexOf(floatingPointChar);
+            if(index > -1)
+            {
+                number = number.Substring(0, index + totalDecimals);
+            }
+        }
+        return number;
+    }
     public static UVADto asDto(this UVA uva)
     {
         return new UVADto{
