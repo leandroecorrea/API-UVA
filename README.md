@@ -3,9 +3,9 @@ Simple API built using dotnet CLI & VSCode.
 Database is populated by scraping BCRA webpage, first by parsing its HTML and, if it doesn't suceed, by downloading a .csv report and reading the content.
 
 Endpoints:
-/uva
-/uva?date="DD/MM/YYYY"
-/uva/interes?desde="DD/MM/YYYY"&hasta="DD/MM/YYYY"
+* /uva
+* /uva?date="DD/MM/YYYY"
+* /uva/interes?desde="DD/MM/YYYY"&hasta="DD/MM/YYYY"
 
 The UI consists on a simple view built in Angular, drawing a line graph using ChartJS.
 
